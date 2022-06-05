@@ -15,12 +15,12 @@ def signup(request):
         pass1 = request.POST['pass1']
         pass2 = request.POST['pass2']
         email = request.POST['email']
+
         myuser = User.objects.create_user(username,email,pass1)
         myuser.save()
         messages.success(request,'You have successfully signed up!')
 
-        return redirect('login')
-
+        redirect('login')
     return render(request,'signup.html')
 
 def login(request):
