@@ -4,7 +4,7 @@ from django.db.models.signals import post_save,post_delete
 
 
 # Create your models here.
-class Profile(models.Model):
+class User(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
     bio = models.TextField(max_length=100,blank=True)
@@ -31,4 +31,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+
     
