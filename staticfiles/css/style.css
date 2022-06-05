@@ -9,6 +9,15 @@ body{
     font-size: 14px;
     background: #b81c1c;
 }
+.logo{
+    width: 40%;
+    height: 100px;
+    background: #b81c1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
     
 
 
