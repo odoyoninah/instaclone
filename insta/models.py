@@ -32,5 +32,17 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+class Like(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.user.username
+
+class Follow(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    follower = models.ForeignKey(User,related_name='follower',on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
     
