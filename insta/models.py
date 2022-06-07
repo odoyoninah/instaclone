@@ -17,7 +17,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images')
     caption = models.CharField(max_length=100)
     likes = models.IntegerField(default=0)
-    comments = models.IntegerField(default=0)
+    comments = models.CharField(max_length=100,blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1,0 +1,30 @@
+h1{
+    color: black;
+}
+.navbar-nav .nav-link:hover {
+    color: #fff;
+    background-color: #146bc2;
+}
+.navbar-nav .nav-link {
+    color: rgb(236, 228, 228);
+    background-color: #343a40;
+}
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+body{
+font-family: poppins;
+font-size: 14px;
+background: white;
+}
+.logo{
+width: 40%;
+height: 100px;
+background: white;
+display: flex;
+justify-content: center;
+align-items: center;
+}
