@@ -4,10 +4,16 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from .models import User,Image,Comment,Like,Follow
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
+
+def image(request):
+    image=Image.objects.all()
+    return render(request,'index.html')
+
 
 def signup(request):
     if request.method == 'POST':
