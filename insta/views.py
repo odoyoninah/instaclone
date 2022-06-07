@@ -7,12 +7,12 @@ from django.contrib.auth import authenticate, login, logout
 from .models import User,Image,Comment,Like,Follow
 
 # Create your views here.
-def index(request):
-    return render(request,'index.html')
+# def index(request):
+#     return render(request,'index.html')
 
 def image(request):
     image=Image.objects.all()
-    return render(request,'index.html')
+    return render(request,'index.html',{'image':image})
 
 
 def signup(request):
