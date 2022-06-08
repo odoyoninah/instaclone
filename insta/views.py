@@ -10,9 +10,9 @@ from .models import User,Image,Comment,Like,Follow
 # def index(request):
 #     return render(request,'index.html')
 
-def image(request):
-    image=Image.objects.all()
-    return render(request,'index.html',{'image':image})
+def images(request):
+    images=Image.objects.all()
+    return render(request,'index.html',{'images':images})
 
 def instagram(request):
     return render(request,'index.html')
@@ -32,6 +32,7 @@ def signup(request):
 
         redirect('login')
     return render(request,'signup.html')
+    
 
 def login(request):
     if request.method == 'POST':

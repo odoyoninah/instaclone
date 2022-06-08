@@ -25,16 +25,19 @@
     
 
     <h1>INSTAGRAM</h1>
+
     
       <div class="container">
-        <div class="row">
+        {% for image in images %}
+        <img src="{{image.image.url}}" class="card-img-top" alt="...">
+
+        <!-- <div class="row">
           <div class="col-md-3">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1654084787966-5bc3b02a05f5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <p class="card-text">Nature and animals are beautiful #spirit animal</p>
-                <p class="card-text"><small>Coco and 775 others liked your photo</small></p>
-              </div>
+            <div class="card"> -->
+              <!-- <div class="card-body">
+                <!-- <p class="card-text">Nature and animals are beautiful #spirit animal</p>
+                <p class="card-text"><small>Coco and 775 others liked your photo</small></p> -->
+              <!-- </div>
               <div class="card-footer">
                   <form action="">
                     <div class="form-group">
@@ -44,12 +47,13 @@
                     <button type="submit" class="btn btn-primary">Post
 
 
-                    </button>
-            </div>
+                    </button> --> -->
+            <!-- </div>
           </div>
         
         </div>
-      </div> 
+      </div>  -->
+      {% endfor %}
     </div>
         
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
