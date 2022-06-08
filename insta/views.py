@@ -14,6 +14,10 @@ def image(request):
     image=Image.objects.all()
     return render(request,'index.html',{'image':image})
 
+def instagram(request):
+    return render(request,'index.html')
+
+
 
 def signup(request):
     if request.method == 'POST':
