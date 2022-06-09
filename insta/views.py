@@ -7,7 +7,6 @@ from django.contrib.auth import authenticate, login, logout
 from .models import User,Image,Comment,Like,Follow
 from .forms import ImageForm, RegisterForm
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -53,7 +52,6 @@ def createpost(request):
     return render(request,'createpost.html',{'form':form}) 
 
 
-@csrf_exempt
 def signup(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)

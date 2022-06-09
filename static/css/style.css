@@ -1,14 +1,22 @@
 h1{
-    color: black;
+    color: rgb(0, 0, 0);
 }
 .navbar-nav .nav-link:hover {
     color: #fff;
     background-color: #146bc2;
+    
 }
 .navbar-nav .nav-link {
     color: rgb(236, 228, 228);
     background-color: #343a40;
 }
+.navbar{
+    background-image:url(https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGluc3RhZ3JhbSUyMGNvbG91cnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 *{
 padding: 0;
 margin: 0;
@@ -28,6 +36,16 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
+.picha{
+height: 200px;
+display: flex;
+justify-content: left;
+align-items: center;
+}
+
+
+
+
 
 
 

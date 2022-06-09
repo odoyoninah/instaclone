@@ -33,7 +33,6 @@ class Image(models.Model):
     caption = models.CharField(max_length=100)
     likes = models.IntegerField(default=0)
     comments = models.CharField(max_length=100,blank=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
 
     def save_image(self):
         self.save()
