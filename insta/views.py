@@ -37,17 +37,7 @@ def follow(request,id):
     new_follow.save()
     return redirect('index')
 
-# def createpost(request):
-#     if request.method=='POST':
-#         image=request.FILES['image']
-#         caption=request.POST['caption']
-#         user=User.objects.get(id=request.user.id)
-#         new_image=Image(image=image,caption=caption,user=user)
-#         new_image.save()
-#         messages.success(request,'Your post has been created!')
-#         return redirect('index')
-#     else:
-#         return render(request,'createpost.html')
+
 
 @login_required(login_url='/accounts/login/')
 def createpost(request):
