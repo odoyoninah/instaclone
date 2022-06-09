@@ -51,12 +51,10 @@ def follow(request,id):
 
 @login_required(login_url='/accounts/login/')
 def createpost(request):
-    current_user=request.user
     if request.method=='POST':
         form = ImageForm(request.POST,request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.user = current_user.profile
             post.save()
 
             return redirect('index')
