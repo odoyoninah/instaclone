@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import User,Image,Comment,Like,Follow
-from .forms import RegisterForm
+from .forms import ImageForm, RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
@@ -37,17 +37,32 @@ def follow(request,id):
     new_follow.save()
     return redirect('index')
 
+# def createpost(request):
+#     if request.method=='POST':
+#         image=request.FILES['image']
+#         caption=request.POST['caption']
+#         user=User.objects.get(id=request.user.id)
+#         new_image=Image(image=image,caption=caption,user=user)
+#         new_image.save()
+#         messages.success(request,'Your post has been created!')
+#         return redirect('index')
+#     else:
+#         return render(request,'createpost.html')
+
+@login_required(login_url='/accounts/login/')
 def createpost(request):
+    current_user=request.user
     if request.method=='POST':
-        image=request.FILES['image']
-        caption=request.POST['caption']
-        user=User.objects.get(id=request.user.id)
-        new_image=Image(image=image,caption=caption,user=user)
-        new_image.save()
-        messages.success(request,'Your post has been created!')
-        return redirect('index')
+        form = ImageForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user.profile
+            post.save()
+
+            return redirect('index')
     else:
-        return render(request,'createpost.html')
+        form = ImageForm()
+    return render(request,'createpost.html',{'form':form}) 
 
 
 @csrf_exempt
@@ -56,6 +71,8 @@ def signup(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
+
+
    
 
         return redirect('login')
