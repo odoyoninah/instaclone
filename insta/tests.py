@@ -1,61 +1,89 @@
 from django.test import TestCase
 from .models import *
 
+class ImageTestClass(TestCase):
 
-class ImageTestCase(TestCase):
+    # Set up method
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        self.image = Image.objects.create(user=self.user, image='test.jpg')
-        self.comment = Comment.objects.create(user=self.user, image=self.image, comment='test')
+        self.image_test = Image(image='image.jpg',caption='This is a test image')
 
+    # Testing instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.testuser, Image))
+        self.assertTrue(isinstance(self.image_test,Image))
 
-    def test_save_image(self):
-        self.image.save_image()
+    # Testing Save Method
+    def test_save_method(self):
+        self.image_test.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
 
-    def test_delete_image(self):
-        self.image.delete_image()
+    # Testing Delete Method
+    def test_delete_method(self):
+        self.image_test.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
 
+    # Testing Update Method
+    def test_update_method(self):
+        self.image_test.update_caption('This is a new caption')
+        images = Image.objects.all()
+        self.assertTrue(images[0].caption == 'This is a new caption')
 
-class CommentTestCase(TestCase):
+class CommentTestClass(TestCase):
+
+    # Set up method
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        self.image = Image.objects.create(user=self.user, image='test.jpg')
-        self.comment = Comment.objects.create(user=self.user, image=self.image, comment='test')
+        self.comment_test = Comment(comment='This is a test comment')
 
+    # Testing instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.testuser, Comment))
+        self.assertTrue(isinstance(self.comment_test,Comment))
 
-class LikeTestCase(TestCase):
+    # Testing Save Method
+    def test_save_method(self):
+        self.comment_test.save_comment()
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments) > 0)
+
+    # Testing Delete Method
+    def test_delete_method(self):
+        self.comment_test.delete_comment()
+        comments = Comment.objects.all()
+        self.assertTrue(len(comments) == 0)
+
+    # Testing Update Method
+    def test_update_method(self):
+        self.comment_test.update_comment('This is a new comment')
+        comments = Comment.objects.all()
+        self.assertTrue(comments[0].comment == 'This is a new comment')
+
+class LikeTestClass(TestCase):
+
+    # Set up method
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        self.image = Image.objects.create(user=self.user, image='test.jpg')
-        self.like = Like.objects.create(user=self.user, image=self.image)
+        self.like_test = Like(like='This is a test like')
 
+    # Testing instance
     def test_instance(self):
-        self.assertTrue(isinstance(self.testuser, Like))
+        self.assertTrue(isinstance(self.like_test,Like))
 
-class FollowTestCase(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        self.follower = User.objects.create_user(username='follower', password='12345')
-        self.follow = Follow.objects.create(user=self.user, follower=self.follower)
+    # Testing Save Method
+    def test_save_method(self):
+        self.like_test.save_like()
+        likes = Like.objects.all()
+        self.assertTrue(len(likes) > 0)
 
-    def test_instance(self):
-        self.assertTrue(isinstance(self.testuser, Follow))
-
-class UserTestCase(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
-
-    def test_instance(self):
-        self.assertTrue(isinstance(self.testuser, User))
+    # Testing Delete Method
+    def test_delete_method(self):
+        self.like_test.delete_like()
+        likes = Like.objects.all()
+        self.assertTrue(len(likes) == 0)
 
 
 
 
+
+
+
+
+    
