@@ -5,8 +5,8 @@ from . import views
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('signup/', views.signup, name='signup'),
+    path('signup/', views.index, name='index'),
+    path('', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('account/', include('django.contrib.auth.urls')), 
