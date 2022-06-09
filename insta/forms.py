@@ -12,10 +12,6 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
 
-# class CommentForm (forms.ModelForm):
-#   class Meta:
-#     model=Comment
-#     exclude=['image','user']
 class ImageForm(ModelForm):
     class Meta:
         model = Image

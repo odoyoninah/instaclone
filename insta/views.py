@@ -9,13 +9,33 @@ from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
-# Create your views here.
-# def index(request):
-#     return render(request,'index.html')
 
 def index(request):
     images=Image.objects.all()
     return render(request,'index.html',{'images':images})
+
+def comment(request,id):
+    image=Image.objects.get(id=id)
+    if request.method=='POST':
+        comment=request.POST['comment']
+        user=User.objects.get(id=request.user.id)
+        new_comment=Comment(comment=comment,user=user,image=image)
+        new_comment.save()
+        return redirect('index')
+
+def like(request,id):
+    image=Image.objects.get(id=id)
+    user=User.objects.get(id=request.user.id)
+    new_like=Like(user=user,image=image)
+    new_like.save()
+    return redirect('index')
+
+def follow(request,id):
+    user=User.objects.get(id=id)
+    follower=User.objects.get(id=request.user.id)
+    new_follow=Follow(user=user,follower=follower)
+    new_follow.save()
+    return redirect('index')
 
 def createpost(request):
     if request.method=='POST':
@@ -29,12 +49,6 @@ def createpost(request):
     else:
         return render(request,'createpost.html')
 
-# @login_required
-# def instagram(request):
-#     return render(request,'index.html')
-
-
-
 
 @csrf_exempt
 def signup(request):
@@ -42,16 +56,7 @@ def signup(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-    #         messages.success(request,'You have successfully registered!')
-    #         return redirect('index')
-    #     username = request.POST['username']
-    #     pass1 = request.POST['pass1']
-    #     pass2 = request.POST['pass2']
-    #     email = request.POST['email']
-
-    #     myuser = User.objects.create_user(username,email,pass1)
-    #     myuser.save()
-    #     messages.success(request,'You have successfully signed up!')
+   
 
         return redirect('login')
     else:    
@@ -59,23 +64,6 @@ def signup(request):
     return render(request,'registration/signup.html',{'form':form})
 
     
-
-# def login(request):
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         pass1 = request.POST['pass1']
-#         user = authenticate(username=username,password=pass1)
-#         if user is not None:
-#             login(request,user)
-#             messages.success(request,'You have successfully logged in!')
-#             return redirect('index')
-#         else:
-#             messages.error(request,'Invalid credentials!')
-#         return redirect('index')
-
-
-#     return render(request,'login.html')
-
 def logout(request):
     logout(request)
     messages.success(request,'You have successfully logged out!')

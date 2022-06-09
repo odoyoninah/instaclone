@@ -29,24 +29,14 @@
     
       <div class="container">
         {% for image in images %}
-        <img src="{{image.image.url}}" class="card-img-top" alt="...">
-
-        <!-- <form method="post">
-          {% load crispy_forms_tags %}
-          {% csrf_token %}
-          {{ form|crispy }}
-         
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-      </form> -->
-
-
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-md-3">
-            <div class="card"> -->
-              <!-- <div class="card-body">
-                <!-- <p class="card-text">Nature and animals are beautiful #spirit animal</p>
-                <p class="card-text"><small>Coco and 775 others liked your photo</small></p> -->
-              <!-- </div>
+            <div class="card"> 
+               <div class="card-body">
+                <img src="{{image.image.url}}" class="card-img-top" alt="...">
+                 <p class="card-text">Nature and animals are beautiful #spirit animal</p>
+                <p class="card-text"><small>Coco and 775 others liked your photo</small></p> 
+               </div>
               <div class="card-footer">
                   <form action="">
                     <div class="form-group">
@@ -56,12 +46,12 @@
                     <button type="submit" class="btn btn-primary">Post
 
 
-                    </button> --> -->
-            <!-- </div>
+                    </button> 
+             </div>
           </div>
         
         </div>
-      </div>  -->
+      </div>
       {% endfor %}
 
     </div>

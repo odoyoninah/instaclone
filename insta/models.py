@@ -4,13 +4,16 @@ from django.db.models.signals import post_save,post_delete
 
 
 # Create your models here.
-class User(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
-    bio = models.TextField(max_length=100,blank=True)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
 
     def __str__(self):
         return self.user.username
+
 
 class Image(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
